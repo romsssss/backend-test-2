@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# Create users with their endpoints
+jane = User.create!(name: 'Jane')
+peter = User.create!(name: 'Peter')
+luke = User.create!(name: 'Luke')
+
+jane.user_numbers.create!(sip_endpoint: 'sip:janedesktop160311141639@phone.plivo.com')
+jane.user_numbers.create!(sip_endpoint: 'sip:janemobile160311141606@phone.plivo.com')
+peter.user_numbers.create!(sip_endpoint: 'sip:peterdesktop160311141706@phone.plivo.com')
+luke.user_numbers.create!(sip_endpoint: 'sip:lukemobile160311141726@phone.plivo.com')
+
+# Create company numbers
+company_numbers = CompanyNumber.create!([
+  { sip_endpoint: 'sip:mainoffice160311142018@phone.plivo.com' },
+  { sip_endpoint: 'sip:salesnumber160311142036@phone.plivo.com' },
+  { sip_endpoint: 'sip:supportnumber160311142058@phone.plivo.com' }
+])
