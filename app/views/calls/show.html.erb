@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uuid:</strong>
+  <%= @call.uuid %>
+</p>
+
+<p>
+  <strong>Caller:</strong>
+  <%= @call.caller_id %>
+</p>
+
+<p>
+  <strong>Caller name:</strong>
+  <%= @call.caller_name %>
+</p>
+
+<p>
+  <strong>Company number:</strong>
+  <%= @call.company_number_id %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @call.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @call.end_time %>
+</p>
+
+<p>
+  <strong>Answer time:</strong>
+  <%= @call.answer_time %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @call.duration %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @call.status %>
+</p>
+
+<p>
+  <strong>Hangup cause:</strong>
+  <%= @call.hangup_cause %>
+</p>
+
+<%= link_to 'Back', calls_path %>

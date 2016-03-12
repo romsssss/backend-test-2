@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312151904) do
+ActiveRecord::Schema.define(version: 20160312163506) do
+
+  create_table "calls", force: :cascade do |t|
+    t.string   "uuid",              null: false
+    t.string   "caller_id"
+    t.string   "caller_name"
+    t.integer  "company_number_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "answer_time"
+    t.integer  "duration"
+    t.string   "status"
+    t.string   "hangup_cause"
+  end
+
+  add_index "calls", ["company_number_id"], name: "index_calls_on_company_number_id"
+  add_index "calls", ["uuid"], name: "index_calls_on_uuid"
 
   create_table "company_numbers", force: :cascade do |t|
     t.string   "sip_endpoint"
