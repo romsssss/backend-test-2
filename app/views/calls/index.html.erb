@@ -7,14 +7,11 @@
     <tr>
       <th>Uuid</th>
       <th>Caller</th>
-      <th>Caller name</th>
       <th>Company number</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Answer time</th>
+      <th>When</th>
       <th>Duration</th>
       <th>Status</th>
-      <th>Hangup cause</th>
+      <th>Voicemail</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,15 +20,12 @@
     <% @calls.each do |call| %>
       <tr>
         <td><%= call.uuid %></td>
-        <td><%= call.caller_id %></td>
-        <td><%= call.caller_name %></td>
+        <td><%= call.caller_name || call.caller_id %></td>
         <td><%= call.company_number_id %></td>
-        <td><%= call.start_time %></td>
-        <td><%= call.end_time %></td>
-        <td><%= call.answer_time %></td>
+        <td><%= time_ago_in_words(call.start_time) %> ago</td>
         <td><%= call.duration %></td>
         <td><%= call.status %></td>
-        <td><%= call.hangup_cause %></td>
+        <td><%= format_voicemail(call.voicemail) %></td>
         <td><%= link_to 'Show', call %></td>
         <td><%= link_to 'Destroy', call, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

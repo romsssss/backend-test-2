@@ -3,4 +3,5 @@ class Call < ActiveRecord::Base
   validates :uuid, uniqueness: true
 
   belongs_to :company_number
+  has_one :voicemail
 end

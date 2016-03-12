@@ -3,7 +3,7 @@ class CallsController < ApplicationController
 
   # GET /calls
   def index
-    @calls = Call.all
+    @calls = Call.all.includes(:voicemail)
   end
 
   # GET /calls/1

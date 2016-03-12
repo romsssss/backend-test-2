@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312163506) do
+ActiveRecord::Schema.define(version: 20160312172417) do
 
   create_table "calls", force: :cascade do |t|
     t.string   "uuid",              null: false
@@ -24,10 +24,12 @@ ActiveRecord::Schema.define(version: 20160312163506) do
     t.integer  "duration"
     t.string   "status"
     t.string   "hangup_cause"
+    t.integer  "voicemail_id"
   end
 
   add_index "calls", ["company_number_id"], name: "index_calls_on_company_number_id"
   add_index "calls", ["uuid"], name: "index_calls_on_uuid"
+  add_index "calls", ["voicemail_id"], name: "index_calls_on_voicemail_id"
 
   create_table "company_numbers", force: :cascade do |t|
     t.string   "sip_endpoint"
@@ -57,5 +59,13 @@ ActiveRecord::Schema.define(version: 20160312163506) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "voicemails", force: :cascade do |t|
+    t.integer "call_id"
+    t.string  "url"
+    t.integer "duration"
+  end
+
+  add_index "voicemails", ["call_id"], name: "index_voicemails_on_call_id"
 
 end
