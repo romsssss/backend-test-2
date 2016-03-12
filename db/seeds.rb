@@ -14,3 +14,8 @@ company_numbers = CompanyNumber.create!([
   { sip_endpoint: 'sip:salesnumber160311142036@phone.plivo.com' },
   { sip_endpoint: 'sip:supportnumber160311142058@phone.plivo.com' }
 ])
+
+# Link users to company numbers
+jane.company_numbers << company_numbers
+peter.company_numbers << company_numbers.second
+luke.company_numbers << company_numbers.last

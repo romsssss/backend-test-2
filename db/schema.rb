@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922194944) do
+ActiveRecord::Schema.define(version: 20160312151904) do
 
   create_table "company_numbers", force: :cascade do |t|
     t.string   "sip_endpoint"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "company_numbers_users", id: false, force: :cascade do |t|
+    t.integer "company_number_id"
+    t.integer "user_id"
+  end
+
+  add_index "company_numbers_users", ["company_number_id"], name: "index_company_numbers_users_on_company_number_id"
+  add_index "company_numbers_users", ["user_id"], name: "index_company_numbers_users_on_user_id"
 
   create_table "user_numbers", force: :cascade do |t|
     t.integer  "user_id"
