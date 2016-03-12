@@ -4,13 +4,13 @@ Rails.application.routes.draw do
 
   resources :calls, only: [:index, :show, :destroy]
 
-  # resources :plivo_calls, only: [] do
-  #   collection do
-  #     post 'inbound'
-  #     post 'hangup'
-  #     post 'fallback'
-  #     post 'voicemail'
-  #   end
-  # end
+  resources :plivo_calls, only: [] do
+    collection do
+      post 'inbound'
+      post 'hangup'
+      post 'fallback'
+      post 'voicemail'
+    end
+  end
 
 end
