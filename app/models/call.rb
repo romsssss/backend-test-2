@@ -3,10 +3,15 @@ class Call < ActiveRecord::Base
   validates :uuid, uniqueness: true
 
   belongs_to :company_number
+  belongs_to :user_number
   has_one :voicemail, dependent: :destroy
 
   def error?
     status == 'error'
+  end
+
+  def completed?
+    status == 'completed'
   end
 
   class << self

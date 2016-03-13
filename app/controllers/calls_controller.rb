@@ -3,7 +3,7 @@ class CallsController < ApplicationController
 
   # GET /calls
   def index
-    @calls = Call.order(id: :desc).includes(:voicemail).includes(:company_number)
+    @calls = Call.order(id: :desc).includes(:voicemail).includes(:company_number).includes(:user_number)
   end
 
   # GET /calls/1

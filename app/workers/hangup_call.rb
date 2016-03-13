@@ -1,6 +1,5 @@
 class HangupCall
   include Sidekiq::Worker
-  include Plivo
 
   # Update call with hangup information
   # @param call_uuid [String] uuid of the call to be dialed
@@ -18,5 +17,10 @@ class HangupCall
       answer_time: params[:AnswerTime],
       duration: params[:Duration]
     )
+
+    # Look for callee information in 1 minute
+    # LookupCallee has to query Plivo API
+    # We have to wait for Plivo API to have the call registered
+    LookupCallee.perform_in(1.minute, call.uuid)
   end
 end

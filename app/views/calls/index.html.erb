@@ -8,6 +8,7 @@
       <th>Uuid</th>
       <th>From</th>
       <th>To</th>
+      <th>Answered by</th>
       <th>When</th>
       <th>Duration</th>
       <th>Status</th>
@@ -22,6 +23,7 @@
         <td><%= truncate(call.uuid, length: 20, delimiter: '-') %></td>
         <td><%= call.caller_name || call.caller_id %></td>
         <td><%= truncate(call.company_number.sip_endpoint) %></td>
+        <td><%= format_user_number(call.user_number) %></td>
         <td><%= call.start_time || '-' %></td>
         <td><%= format_duration(call.duration) %></td>
         <td><%= call.status %></td>

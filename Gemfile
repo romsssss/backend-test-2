@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'plivo'
 # Background jobs
 gem 'sidekiq'
+gem 'sinatra', require: nil
 
 # Assets
 gem 'uglifier', '>= 1.3.0'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312172417) do
+ActiveRecord::Schema.define(version: 20160313105429) do
 
   create_table "calls", force: :cascade do |t|
     t.string   "uuid",              null: false
@@ -25,9 +25,11 @@ ActiveRecord::Schema.define(version: 20160312172417) do
     t.string   "status"
     t.string   "hangup_cause"
     t.integer  "voicemail_id"
+    t.integer  "user_number_id"
   end
 
   add_index "calls", ["company_number_id"], name: "index_calls_on_company_number_id"
+  add_index "calls", ["user_number_id"], name: "index_calls_on_user_number_id"
   add_index "calls", ["uuid"], name: "index_calls_on_uuid"
   add_index "calls", ["voicemail_id"], name: "index_calls_on_voicemail_id"
 
