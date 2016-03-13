@@ -7,7 +7,10 @@ gem 'rails', '4.2.1'
 gem 'sqlite3'
 # API wrapper for Plivo
 gem 'plivo'
+# Background jobs
+gem 'sidekiq'
 
+# Assets
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'

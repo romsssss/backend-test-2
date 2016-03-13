@@ -6,8 +6,8 @@
   <thead>
     <tr>
       <th>Uuid</th>
-      <th>Caller</th>
-      <th>Company number</th>
+      <th>From</th>
+      <th>To</th>
       <th>When</th>
       <th>Duration</th>
       <th>Status</th>
@@ -19,11 +19,11 @@
   <tbody>
     <% @calls.each do |call| %>
       <tr>
-        <td><%= call.uuid %></td>
+        <td><%= truncate(call.uuid, length: 20, delimiter: '-') %></td>
         <td><%= call.caller_name || call.caller_id %></td>
-        <td><%= call.company_number_id %></td>
-        <td><%= time_ago_in_words(call.start_time) %> ago</td>
-        <td><%= call.duration %></td>
+        <td><%= truncate(call.company_number.sip_endpoint) %></td>
+        <td><%= call.start_time || '-' %></td>
+        <td><%= format_duration(call.duration) %></td>
         <td><%= call.status %></td>
         <td><%= format_voicemail(call.voicemail) %></td>
         <td><%= link_to 'Show', call %></td>
